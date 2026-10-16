@@ -12,12 +12,21 @@ public class SandwichShop {
         System.out.println(" 2: Large ($8.95)");
 
         // Get user input for sandwich size
-        System.out.print(" Enter 1 or 2: ");
+        System.out.print("Enter 1 or 2: ");
         int sandwichSize = scanner.nextInt();
+
+        // Eat the line
+        scanner.nextLine();
+
+        //Get user input for sandwich loaded yes or no
+        System.out.print("Do you want a loaded sandwich? yes or no: ");
+        String loadedChoice = scanner.nextLine();
+
 
         // Get user's age for the discount
         System.out.print("Enter your age: ");
         int userAge = scanner.nextInt();
+
 
         // initialize the variable for base price
         double basePrice;
@@ -29,13 +38,22 @@ public class SandwichShop {
             basePrice = 8.95;
         }
 
+        if (loadedChoice.equalsIgnoreCase("yes")){
+            if (sandwichSize == 1){
+                basePrice += 1;
+            } else {
+                basePrice += 1.75;
+            }
+        }
+
+
         // initialize the variable for total price after discount
         double totalPrice;
 
         if ( userAge <= 17 ){   // if the user is less than 17 or 17
             totalPrice = basePrice* 0.9; // the discount is 10 percent
         } else if (userAge >= 65){  // if the user is greater than 65 or 65
-            totalPrice = basePrice*0.8 ; // the discount is 20 percent
+            totalPrice = basePrice* 0.8 ; // the discount is 20 percent
         } else{
             totalPrice = basePrice;  // else no discount applied
         }
